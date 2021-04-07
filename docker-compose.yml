@@ -1,0 +1,29 @@
+version: '3'
+services:
+  db:
+    image: postgres:13-alpine
+    environment:
+      - POSTGRES_DB=pgdb
+      - POSTGRES_USER=pguser
+      - POSTGRES_PASSWORD=pgpassword
+    ports:
+      - "5432:5432"
+#    volumes:
+#      - db-data:/var/lib/postgresql/data
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - DB_HOST=db
+      - DB_NAME=pgdb
+      - DB_USER=pguser
+      - DB_PASS=pgpassword
+    depends_on:
+      - db
+    ports:
+      - '8000:8000'
+
+#volumes:
+#  db-data:
