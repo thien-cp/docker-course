@@ -1,4 +1,4 @@
-##Dockerfile
+## Dockerfile
 ```
 FROM python:3.8-alpine
 EXPOSE 8000
@@ -34,7 +34,7 @@ Stop container
 docker stop <id>
 ```
 
-##Docker Compose
+## Docker Compose
 docker-compose.yml
 ```
 version: '3'
